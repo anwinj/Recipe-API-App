@@ -26,7 +26,7 @@
   <!-- <pre>{{category}}</pre> -->
 
   <div class="mt-3 d-flex flex-wrap p-4">
-    <div *ngFor="let recipe of allRecipes | search:searchKey | category:category ;let i=index" class="card m-3 shadow " style="width: 19rem;">
+    <div *ngFor="let recipe of allRecipes | search:searchKey | category:category | paginate:{itemsPerPage:8,currentPage:page} ;let i=index" class="card m-3 shadow " style="width: 19rem;">
       <img height="200px" src={{recipe.image}} class="card-img-top" alt="">
       <div class="card-body">
         <h5 class="card-title">{{recipe.name}}</h5>
@@ -41,5 +41,8 @@
     <div *ngIf="(allRecipes | search:searchKey).length==0">
       <p class="fw-bolder text-danger">No Recipe found....</p>
     </div>
+  </div>
+  <div class="text-center p-5">
+    <pagination-controls (pageChange)="page=$event"></pagination-controls>
   </div>
   </div>

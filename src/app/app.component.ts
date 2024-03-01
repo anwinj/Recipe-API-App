@@ -13,8 +13,8 @@ export class AppComponent implements OnInit{
   allRecipes:any = []
   viewInstruction:boolean = false
   title = 'Recipe-API-App';
+  page:number = 1;
   
-
   constructor(private api:RecipeService){}
 
   ngOnInit(): void {
@@ -34,6 +34,7 @@ export class AppComponent implements OnInit{
 
   setCategory(cat:string){
     this.category = cat
+    this.page = 1
   }
 
 }
